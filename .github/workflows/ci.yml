@@ -1,0 +1,10 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  server:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          lfs: true
+      - run: grep Hello test.lfs
