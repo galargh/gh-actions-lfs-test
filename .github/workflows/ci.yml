@@ -3,8 +3,12 @@ on: workflow_dispatch
 jobs:
   server:
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        lfs: [true, false]
     steps:
       - uses: actions/checkout@v2
         with:
-          lfs: true
+          lfs: ${{ matrix.lfs }}
+      - run: ls -la
       - run: grep Hello test.lfs
